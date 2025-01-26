@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "esp_camera.h"
 #include <WiFi.h>
+#include "wifi_creds.h"
 
 //
 // WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
@@ -19,9 +20,6 @@
 //#define CAMERA_MODEL_TTGO_T_JOURNAL // No PSRAM
 
 #include "camera_pins.h"
-
-const char* ssid = "*********";
-const char* password = "*********";
 
 void startCameraServer();
 
@@ -91,7 +89,7 @@ void setup() {
   s->set_hmirror(s, 1);
 #endif
 
-  WiFi.begin(ssid, password);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
